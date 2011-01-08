@@ -56,7 +56,7 @@ LiquidCrystal lcd(0, 1, 2, 3, 4, 5);
 byte bGlobalErr;//for passing error code back from complex functions.
 byte dht_dat[4];//Array to hold the bytes sent from sensor.
 int light_intensity = 0;
-int flip = 0;
+unsigned int flip = 0;
 
 void setup(){
   //Blink LED to detect hangs
@@ -86,7 +86,8 @@ void loop(){
     digitalWrite(13, LOW);
   }
   
-  flip++;
+flip++;
+  
   light_intensity=analogRead(LIGHT_SENSOR_PIN);
   
   ReadDHT();//This is the "heart" of the program.

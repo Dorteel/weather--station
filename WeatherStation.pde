@@ -171,7 +171,7 @@ void ReadDHT(){
 	// First: pull-down i/o pin for 18ms
 	digitalWrite(dht_dpin,LOW); //Was: PORTC &= ~_BV(dht_PIN);
 	delay(18);
-	delay(5); //TKB, frm Quine at Arduino forum
+	delayMicroseconds(600);//TKB, frm Quine at Arduino forum
 /*aosong.com datasheet for DHT22 says pin should be low at least
    500us. I infer it can be low longer without any]
    penalty apart from making "read sensor" process take
@@ -208,7 +208,7 @@ void ReadDHT(){
    sensor. The low following that high is the start of the first
    bit of the forty to come. The routine "read_dht_dat()"
    expects to be called with the system already into this low.*/
-	delayMicroseconds(80);
+	delayMicroseconds(70);
 //now ready for data reception... pick up the 5 bytes coming from
 //   the sensor
 	for (i=0; i<5; i++)
